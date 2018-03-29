@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Internet Assignment</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+
+    <script>
+            function timeStamp() {
+                var d = new Date();
+                var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+                return time
+            }
+
+            function createHash(){
+                var time = timeStamp(),
+                    pubKey = "e8fc2c85870619349d07ae206536ca4a",
+                    priKey = "11410028f40053afa117b863347a764389ac706e",
+                    input = time+priKey+pubKey,
+                    hash = CryptoJS.MD5(input);
+                
+                return hash
+            }
+            
+       
+	    $(document).ready(function(){
+            var time = timeStamp();
+            var hash = createHash();
+            var url = "http://gateway.marvel.com/v1/public/characters?ts="+time+"&apikey=e8fc2c85870619349d07ae206536ca4a&hash="+hash;
+    
+            $.get(url, function(data) {
+                console.log(data)
+            }, "json")
+	    });
+
+    </script>
+
+</head>
+<body>
+
+
+
+
+</body>
+</html>
