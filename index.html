@@ -31,7 +31,7 @@
 	    $(document).ready(function(){
             var time = timeStamp();
             var hash = createHash();
-            var url = "http://gateway.marvel.com/v1/public/characters?ts="+time+"&apikey=e8fc2c85870619349d07ae206536ca4a&hash="+hash;
+            var url = "https://gateway.marvel.com/v1/public/characters?ts="+time+"&apikey=e8fc2c85870619349d07ae206536ca4a&hash="+hash;
     
             $.get(url, function(data) {
                 console.log(data)
